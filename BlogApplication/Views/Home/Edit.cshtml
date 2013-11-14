@@ -1,0 +1,31 @@
+﻿@model BlogApplication.Models.Article
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+      
+     @Html.HiddenFor(model => model.Id)
+    <span class="label label-warning"> @Model.Title</span>
+    <p>@Model.Content</p>
+    <p>@Model.PostDate</p>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Comments</div>
+            <div class="panel-body">
+                <table class="table">
+                    @foreach (var item in ViewBag.Comments)
+                    {      
+                        <tr>@item.Comments</tr>
+                        <tr>@item.CommentOwner</tr>
+                        <tr>@item.CommentDate</tr>
+                    }                  
+                </table>
+            </div>
+        </div>
+}
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+

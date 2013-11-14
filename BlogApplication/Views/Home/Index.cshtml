@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BlogApplication.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@foreach (var item in Model)
+{
+    
+    <span class="label label-warning"> @Html.DisplayFor(modelItem=>item.Title)</span>
+    <br /> 
+        @Html.DisplayFor(modelItem=>item.Content)
+    <br />
+    @Html.ActionLink("oku", "Edit", new {id=item.Id })
+    <br />
+}
