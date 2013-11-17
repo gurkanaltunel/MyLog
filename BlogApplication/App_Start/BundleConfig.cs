@@ -12,7 +12,8 @@ namespace BlogApplication
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Js/bootstrap.js"));
+                        "~/Js/bootstrap.js",
+                        "~/Scripts/jquery-1.7.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

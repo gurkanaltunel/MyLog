@@ -25,5 +25,19 @@ namespace BlogApplication.Controllers
             ViewBag.Comments = dbComments;
             return View(dbArticle);
         }
+        public void AddComment(string jsonData,string id,string commentOwner)
+        {
+            var comment = new Comment
+            {
+                ArticleId =int.Parse(id),
+                Comments = jsonData,
+                CommentDate = DateTime.Now,
+                CommentOwner = commentOwner
+            };
+            db.Comments.Add(comment);
+            db.SaveChanges();
+
+            RedirectToAction("Edit");
+        }
     }
 }

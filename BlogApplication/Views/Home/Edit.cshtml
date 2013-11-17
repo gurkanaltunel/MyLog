@@ -3,29 +3,33 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-      
-     @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Id, new { id="articleId"})
     <span class="label label-warning"> @Model.Title</span>
     <p>@Model.Content</p>
     <p>@Model.PostDate</p>
         <div class="panel panel-primary">
             <div class="panel-heading">Comments</div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table table-bordered">
                     @foreach (var item in ViewBag.Comments)
                     {      
-                        <tr>@item.Comments</tr>
-                        <tr>@item.CommentOwner</tr>
-                        <tr>@item.CommentDate</tr>
+                        <tr class="warning">
+                            <td>
+                                @item.Comments<br />
+                                @item.CommentOwner<br />
+                                @item.CommentDate<br />
+                            </td>
+                        </tr>
                     }                  
                 </table>
+                <table>
+                    <tr><td>name:</td><td><input type="text" id="commentOwner" /></td></tr>
+                    <tr><td>comment:</td><td><textarea id="txtComment" style="width:250px; height:100px"></textarea></td></tr>
+                </table>
+                <button id="btnSubmitComment" type="button" class="btn btn-lg btn-primary">Add Comment</button>
+                @Html.ActionLink("Back", "Index", new {@class="btn btn-lg btn-primary" })
             </div>
         </div>
 }
-<div>
-    @Html.ActionLink("Back", "Index")
-</div>
-
