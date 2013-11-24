@@ -166,8 +166,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Default1Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,6 +178,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogDbContext.cs" />
+    <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -294,7 +295,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
-    <Content Include="Views\Default1\Index.cshtml" />
+    <Content Include="Views\Layout\Categories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -309,6 +310,9 @@
     <EmbeddedResource Include="Migrations\201311112005508_InitialCreate.resx">
       <DependentUpon>201311112005508_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

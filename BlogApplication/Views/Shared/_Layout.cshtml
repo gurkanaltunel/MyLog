@@ -16,7 +16,7 @@
         <div class="span12" style="margin-bottom: 3px">
             <nav class="navbar navbar-default" role="navigation">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Home</a></li>                  
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">Contact</a></li>
                     <li style="margin-left: 380px;">
@@ -34,17 +34,9 @@
         <div class="span12">
             <div class="row">
                 <div class="span3" style="background-color: #ffffff">
-
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#">Categories</a></li>
-                        <li><a href="#">C#</a></li>
-                        <li><a href="#">Mvc</a></li>
-                        <li><a href="#">Entity Framework</a></li>
-                    </ul>
-
+                   @{Html.RenderAction("Categories", "Layout");}
                 </div>
                 <div class="span9">
-                    <!--Body content-->
                     @RenderBody()
                 </div>
             </div>

@@ -13,8 +13,10 @@ namespace BlogApplication.Controllers
 
         public ActionResult Index()
         {
-            var articles = db.Articles.ToList();
-            return View(articles);
+            var articles = from a in db.Articles
+                           orderby a.PostDate descending
+                           select a;
+            return View("Index",articles.ToList());
         }
         public ActionResult Edit(int id)
         {
@@ -38,6 +40,15 @@ namespace BlogApplication.Controllers
             db.SaveChanges();
 
             RedirectToAction("Edit");
+        }
+        public ActionResult ArticleCategory(int id)
+        {
+            var categoryArticles = from a in db.Articles
+                                   where a.CategoryId == id
+                                   orderby a.PostDate descending
+                                   select a;
+
+            return View("Index", categoryArticles.ToList());
         }
     }
 }

@@ -11,6 +11,11 @@ namespace BlogApplication.Models
         public int ArticleId { get; set; }
         public string CommentOwner { get; set; }
         public string Comments { get; set; }
-        public DateTime ?CommentDate { get; set; }
+        private DateTime? commentDate;
+        public DateTime ?CommentDate
+        {
+            get { return commentDate; }
+            set { commentDate = value; }
+        }
     }
 }
