@@ -11,5 +11,6 @@ namespace BlogApplication.Models
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }
