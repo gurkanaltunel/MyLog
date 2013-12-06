@@ -6,8 +6,8 @@
         JSONstring = JSON.stringify(comment);
         $.post('/Home/AddComment', { jsonData: JSONstring, id: id ,commentOwner:commentOwner});
     });
-    $(".nav nav-pills nav-stacked a").click(function () {
-        var parentTag = $(this).parent();
-        parentTag.addClass("active");
+    $("#categories li").click(function () {
+        $("#categories li").removeClass("active");
+        $(this).addClass("active");
     });
 });
