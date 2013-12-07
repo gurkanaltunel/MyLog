@@ -181,6 +181,7 @@
     <Compile Include="Models\BlogDbContext.cs" />
     <Compile Include="Models\Categories.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
