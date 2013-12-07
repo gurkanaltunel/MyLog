@@ -1,0 +1,18 @@
+﻿@model IEnumerable<BlogApplication.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Articles</h2>
+
+
+@foreach (var item in Model) {
+    
+        <p class="text-warning"> @Html.DisplayFor(modelItem => item.Title)</p>
+    
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })  
+}
+   @Html.ActionLink("Create New","Create")   
