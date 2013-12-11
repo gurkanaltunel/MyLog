@@ -1,0 +1,37 @@
+﻿@model BlogApplication.Models.Categories
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<fieldset>
+    <legend>Delete Category</legend>
+
+   
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+   
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryDiscription)
+    </div>
+
+   
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" class="btn btn-lg btn-primary" />
+        @Html.ActionLink(
+    linkText: "Back to List",
+    actionName: "Index",
+    routeValues: "Category",
+    htmlAttributes: new { @class = "btn btn-lg btn-primary" }
+    )
+    </p>
+}
