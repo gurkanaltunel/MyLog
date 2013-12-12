@@ -4,10 +4,11 @@
         var id = $("#articleId").val();
         var commentOwner = $("#commentOwner").val();
         JSONstring = JSON.stringify(comment);
-        $.post('/Home/AddComment', { jsonData: JSONstring, id: id ,commentOwner:commentOwner});
+        $.post('/Home/AddComment', { jsonData: JSONstring, id: id ,commentOwner:commentOwner}, location.reload());
     });
     $("#categories li").click(function () {
         $("#categories li").removeClass("active");
         $(this).addClass("active");
     });
+   
 });

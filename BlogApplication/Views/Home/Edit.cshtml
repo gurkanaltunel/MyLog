@@ -8,7 +8,7 @@
     @Html.HiddenFor(model => model.Id, new { id="articleId"})
     <span class="label label-warning"> @Model.Title</span>
     <p>@Model.Content</p>
-    <p>@Model.PostDate</p>
+    <p>@Html.DisplayFor(model=>model.PostDate)</p>
         <div class="panel panel-primary">
             <div class="panel-heading">Comments</div>
             <div class="panel-body">

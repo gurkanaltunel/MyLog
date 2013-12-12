@@ -16,6 +16,7 @@ namespace BlogApplication.Controllers
             var articles = from a in db.Articles
                            orderby a.PostDate descending
                            select a;
+
             return View("Index",articles.ToList());
         }
         public ActionResult Edit(int id)
@@ -27,7 +28,7 @@ namespace BlogApplication.Controllers
             ViewBag.Comments = dbComments;
             return View(dbArticle);
         }
-        public void AddComment(string jsonData,string id,string commentOwner)
+        public ActionResult AddComment(string jsonData,string id,string commentOwner)
         {
             var comment = new Comment
             {
@@ -39,7 +40,7 @@ namespace BlogApplication.Controllers
             db.Comments.Add(comment);
             db.SaveChanges();
 
-            RedirectToAction("Edit");
+            return RedirectToAction("Edit", new { id = id });
         }
         public ActionResult ArticleCategory(int id)
         {
@@ -48,7 +49,7 @@ namespace BlogApplication.Controllers
                                    orderby a.PostDate descending
                                    select a;
 
-            return View("Index", categoryArticles.ToList());
+            return PartialView("CategoryById", categoryArticles.ToList());
         }
     }
 }
