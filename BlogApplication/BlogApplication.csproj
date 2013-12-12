@@ -174,12 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201311112005508_InitialCreate.cs" />
-    <Compile Include="Migrations\201311112005508_InitialCreate.Designer.cs">
-      <DependentUpon>201311112005508_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogDbContext.cs" />
     <Compile Include="Models\Categories.cs" />
@@ -323,11 +317,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201311112005508_InitialCreate.resx">
-      <DependentUpon>201311112005508_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

@@ -6,6 +6,10 @@
 }
 
 <table>
+    <tr>
+        <td><label>Name</label></td>
+        <td><label>Description</label></td>
+    </tr>
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -19,7 +23,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
-        @Html.ActionLink("Create New Category", "Create", new { @class="btn btn-lg btn-primary"})
     </tr>
 }
+    <tr><td>@Html.ActionLink("Create New Category", "Create", new { @class = "btn btn-lg btn-primary" })</td></tr>
 </table>

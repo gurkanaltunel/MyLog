@@ -30,6 +30,7 @@
         </div>
          <div class="editor-field">
             @Html.DropDownListFor(model=>model.CategoryId,new SelectList(Model.Categories,"Value","Text"))
+             @Html.ActionLink("Add New Category", "Index", "Category")
             @Html.ValidationMessageFor(model => model.Content)
         </div>
         <p>
@@ -42,6 +43,9 @@
     routeValues: new{value="asdasd198"},
     htmlAttributes:new {@class="btn btn-lg btn-primary"}
     )
+            </p>
+            <p>
+           
         </p>
     </fieldset>
 }
