@@ -4,7 +4,7 @@
         <li class="active"><a href="#">Categories</a></li>
         @foreach (var item in Model)
 {
-            <li><a href="@Url.Action("Index", "Home", new { id = @item.Id })">@Html.DisplayFor(modelItem=>item.CategoryName)</a></li>
+            <li><a href="#" onclick="Category.GetCategory(@item.Id)">@Html.DisplayFor(modelItem=>item.CategoryName)</a></li>
 }
     </ul>
 

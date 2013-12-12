@@ -93,7 +93,7 @@ namespace BlogApplication.Controllers
                 //db.Articles.Find(id);
                 db.Entry(article).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { value = "asdasd198" });
             }
             catch
             {
@@ -116,7 +116,7 @@ namespace BlogApplication.Controllers
                 var article=db.Articles.Find(id);
                 db.Articles.Remove(article);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { value = "asdasd198" });
             }
             catch
             {

@@ -3,10 +3,9 @@
 @foreach (var item in Model)
 {
     
-    <span class="label label-warning"> @Html.DisplayFor(modelItem=>item.Title)</span>
+   <a href="@Url.Action("Edit","Home",new {id=item.Id})"><span class="label label-warning">@Html.DisplayFor(modelItem=>item.Title)</span></a> 
     <br /> 
-        @Html.DisplayFor(modelItem=>item.Content)
+    @Html.DisplayFor(modelItem=>item.Content)
     <br />
-    @Html.ActionLink("Read", "Edit", new {id=item.Id })
     <br />
 }

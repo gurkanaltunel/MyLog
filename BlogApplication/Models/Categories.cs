@@ -11,10 +11,10 @@ namespace BlogApplication.Models
         public int Id { get; set; }
         [Display(Name="Category Name"),Required]
         public string CategoryName { get; set; }
-        [Display(Name="Category Discription")]
+        [Display(Name="Category Discription"),DataType(DataType.MultilineText)]
         public string CategoryDiscription { get; set; }
         private DateTime? createDate;
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime),DisplayFormat(DataFormatString="{0:dd/mm/yy}")]
         public DateTime? CreateDate
         {
             get { return createDate; }

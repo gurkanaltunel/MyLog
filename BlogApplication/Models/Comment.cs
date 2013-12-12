@@ -13,7 +13,7 @@ namespace BlogApplication.Models
         public string CommentOwner { get; set; }
         public string Comments { get; set; }
         private DateTime? commentDate;
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.DateTime),DisplayFormat(DataFormatString="{0:dd/mm/yy}")]
         public DateTime ?CommentDate
         {
             get { return commentDate; }
