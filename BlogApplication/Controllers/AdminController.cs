@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlogApplication.Models;
+using System.Data.Entity;
+using BlogApplication.Repository;
+using BlogApplication.ViewModel;
+using BlogApplication.Exceptions;
 
 namespace BlogApplication.Controllers
 {
@@ -12,8 +16,13 @@ namespace BlogApplication.Controllers
  
         BlogDbContext db = new BlogDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(string value)
         {
+            const string MyValue = "asdasd198";
+            if (value != MyValue)
+            {
+                return RedirectToAction("/Home/Index");
+            }
             List<Article> list = new List<Article>();
             var articles = db.Articles.Select(x => new { Id = x.Id, Title = x.Title });
             foreach (var item in articles)
@@ -31,43 +40,60 @@ namespace BlogApplication.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            CategoryViewModel model = new CategoryViewModel();
+            model.Categories = CategoryRepository.Instance.Categories();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(Article article)
+        public ActionResult Create(CategoryViewModel model)
         {
             try
             {
-                db.Articles.Add(article);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    Article article = new Article
+                    {
+                        Title = model.Title,
+                        Content = model.Content,
+                        PostDate = DateTime.Now,
+                        CategoryId = model.CategoryId
+                    };
+                    db.Articles.Add(article);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", new { value = "asdasd198" });
+                }
+                else
+                {
+                    return View();
+                }
+               
             }
-            catch
+            catch (OperationWasFailedException)
             {
-                return View();
-            }
-        }
 
-        //
-        // GET: /Admin/Edit/5
+                throw new OperationWasFailedException("falan filan");
+            }     
+        }
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var article = db.Articles.Find(id);
+            EditViewModel editModel = new EditViewModel();
+            editModel.Article = article;
+            editModel.Categories = CategoryRepository.Instance.Categories();
+            return View(editModel);
         }
 
-        //
-        // POST: /Admin/Edit/5
-
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Article article)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                //db.Articles.Find(id);
+                db.Entry(article).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", new { value = "asdasd198" });
             }
             catch
             {
@@ -75,25 +101,22 @@ namespace BlogApplication.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Delete/5
-
         public ActionResult Delete(int id)
         {
-            return View();
+            var article = db.Articles.Find(id);
+            return View(article);
         }
 
-        //
-        // POST: /Admin/Delete/5
-
+        
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id,Article articl)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var article=db.Articles.Find(id);
+                db.Articles.Remove(article);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { value = "asdasd198" });
             }
             catch
             {

@@ -1,14 +1,14 @@
-﻿@model BlogApplication.Models.Article
+﻿@model BlogApplication.ViewModel.CategoryViewModel
 
 @{
-    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Article</legend>
+     
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
@@ -22,35 +22,29 @@
             @Html.LabelFor(model => model.Content)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Content)
+            @Html.EditorFor(model => model.Content, new { htmlAttibute=new { style="Width:400px; Height:400px"}})
             @Html.ValidationMessageFor(model => model.Content)
         </div>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.PostDate)
+            @Html.LabelFor(model=>model.Categories)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PostDate)
-            @Html.ValidationMessageFor(model => model.PostDate)
+         <div class="editor-field">
+            @Html.DropDownListFor(model=>model.CategoryId,new SelectList(Model.Categories,"Value","Text"))
+            @Html.ValidationMessageFor(model => model.Content)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryId)
-            @Html.ValidationMessageFor(model => model.CategoryId)
-        </div>
-
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Create" class="btn btn-lg btn-primary"/>
+
+             @Html.ActionLink(
+    linkText:"Back To List",
+    actionName:"Index",
+    controllerName:"Admin",
+    routeValues: new{value="asdasd198"},
+    htmlAttributes:new {@class="btn btn-lg btn-primary"}
+    )
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

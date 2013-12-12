@@ -10,9 +10,10 @@
 
 @foreach (var item in Model) {
     
-        <p class="text-warning"> @Html.DisplayFor(modelItem => item.Title)</p>
+        <p class="text-warning"> @Html.DisplayFor(modelItem => item.Title)
     
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })  
+        </p>
 }
    @Html.ActionLink("Create New","Create")   

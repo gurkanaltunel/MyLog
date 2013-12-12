@@ -11,10 +11,10 @@ namespace BlogApplication.Controllers
     {
         BlogDbContext db = new BlogDbContext();
 
-        public ActionResult Categories()
+        public PartialViewResult Categories()
         {
             var categories = db.Categories.ToList();
-            return View(categories);
+            return PartialView(categories);
         }
 
     }
