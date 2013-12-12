@@ -1,0 +1,45 @@
+﻿@model BlogApplication.Models.Categories
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Add Category</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryName)
+            @Html.ValidationMessageFor(model => model.CategoryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryDiscription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CategoryDiscription)
+            @Html.ValidationMessageFor(model => model.CategoryDiscription)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="btn btn-lg btn-primary" />
+            @Html.ActionLink(
+    linkText: "Back to List",
+    actionName: "Index",
+    routeValues: "Category",
+    htmlAttributes: new { @class = "btn btn-lg btn-primary" }
+    )
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
