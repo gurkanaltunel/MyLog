@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BlogApplication.Models;
 using BlogApplication.ViewModel;
+using System.Web.Caching;
 
 namespace BlogApplication.Controllers
 {
@@ -14,23 +15,32 @@ namespace BlogApplication.Controllers
 
         public ActionResult Index()
         {
-            var articles = from a in db.Articles
-                           orderby a.PostDate descending
-                           select a;
-
-            foreach (var item in articles)
+            List<Article> articleList = new List<Article>();
+            if (HttpRuntime.Cache["Articles"]!=null)
             {
-                if (item.Content.Length>250)
-                {
-                    item.Content = item.Content.Substring(0, 250) + " ...";
-                }
-                else
-                {
-                    item.Content = item.Content;
-                }
+                var articles = HttpRuntime.Cache["Articles"] as List<Article>;
+                return View(articles);
             }
-
-            return View("Index",articles.ToList());
+            else
+            {
+                var articles = from a in db.Articles
+                               orderby a.PostDate descending
+                               select a;
+                foreach (var item in articles)
+                {
+                    if (item.Content.Length > 250)
+                    {
+                        item.Content = item.Content.Substring(0, 250) + " ...";
+                    }
+                    else
+                    {
+                        item.Content = item.Content;
+                    }
+            }
+                articleList = articles.ToList();
+                HttpRuntime.Cache.Insert("Articles", articleList, null, DateTime.Now.AddMinutes(30), Cache.NoSlidingExpiration);
+                return View(articleList);
+            }
         }
         public ActionResult Edit(int id)
         {

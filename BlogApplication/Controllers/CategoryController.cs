@@ -43,6 +43,7 @@ namespace BlogApplication.Controllers
             {
                 db.Entry(model).CurrentValues.SetValues(category);
             }
+            db.SaveChanges();
             return RedirectToAction("Index", "Category");
         }
         public ActionResult Delete(int id)

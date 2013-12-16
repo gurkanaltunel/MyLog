@@ -21,7 +21,23 @@
                 }
             });
     },
-    
+    Search: function (word) {
+        var params = {};
+        params["SearchWord"] = word;
+        $.ajax({
+            method: 'POST',
+            url: '/Search/Search',
+            data: params,
+            dataType: 'html',
+            success: function (response) {
+                $('.span9').empty().html(response);
+            },
+            error: function (error) {
+            },
+            complete: function () {
+            }
+        });
+    }  
 };
 
 $(document).ready(function () {
