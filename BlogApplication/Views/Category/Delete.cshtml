@@ -4,25 +4,23 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h3>Delete Category</h3>
 <fieldset>
-    <legend>Delete Category</legend>
-
-   
+    
     <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryName)
+        Category Name: @Html.DisplayFor(model => model.CategoryName)
     </div>
 
    
     <div class="display-field">
-        @Html.DisplayFor(model => model.CategoryDiscription)
+        Short Description: @Html.DisplayFor(model => model.CategoryDiscription)
     </div>
 
    
     <div class="display-field">
-        @Html.DisplayFor(model => model.CreateDate)
+        Create Date: @Html.DisplayFor(model => model.CreateDate)
     </div>
-</fieldset>
+</fieldset><br />
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>

@@ -10,6 +10,11 @@
         $("#categories li").removeClass("active");
         $(this).addClass("active");
     });
+    $("#MenuItems li").click(function () {
+        $("#MenuItems li").removeClass("active");
+        $(this).addClass("active");
+        Category.ReturnProjectView();
+    });
     $("#btnSearch").click(function () {
         var searchWord = $("#txtSearch").val();
         Category.Search(searchWord);

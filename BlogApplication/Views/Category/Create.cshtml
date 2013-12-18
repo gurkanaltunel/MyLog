@@ -8,9 +8,8 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
+    <h3>Add Category</h3>
     <fieldset>
-        <legend>Add Category</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.CategoryName)

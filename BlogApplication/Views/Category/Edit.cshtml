@@ -8,9 +8,8 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
+    <h3>Edit Category</h3>
     <fieldset>
-        <legend>Edit Category</legend>
 
         @Html.HiddenFor(model => model.Id)
 

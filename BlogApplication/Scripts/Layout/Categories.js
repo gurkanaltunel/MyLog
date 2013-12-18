@@ -37,6 +37,20 @@
             complete: function () {
             }
         });
+    },
+    ReturnProjectView: function () {
+        $.ajax({
+            method: 'POST',
+            url: '/ReturnProjects/Home',
+            dataType: 'html',
+            success: function (response) {
+                $('.span9').empty().html(response);
+            },
+            error: function (error) {
+            },
+            complete: function () {
+            }
+        });
     }  
 };
 

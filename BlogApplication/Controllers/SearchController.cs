@@ -20,7 +20,8 @@ namespace BlogApplication.Controllers
                 articles = HttpRuntime.Cache["Articles"] as List<Article>;
             }
             var article = from a in articles
-                          where SqlMethods.Like(a.Title, "%" + SearchWord + "%")
+                          //where SqlMethods.Like(a.Title, "%" + SearchWord + "%")
+                          where a.Title.Contains(SearchWord)
                           select a;
 
             return PartialView("Search",article.ToList());

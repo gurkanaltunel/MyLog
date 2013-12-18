@@ -78,5 +78,9 @@ namespace BlogApplication.Controllers
 
             return PartialView("CategoryById", categoryArticles.ToList());
         }
+        public ActionResult ReturnProjects()
+        {
+            return PartialView("ReturnProjects");
+        }
     }
 }
